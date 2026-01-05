@@ -34,4 +34,4 @@ A 4-page interactive dashboard built in Power BI to monitor sales KPIs, analyze 
 1. Install **Power BI Desktop**.
 2. Clone this repository:
    ```bash
-   git clone https://github.com/<your-username>/sales-performance-powerbi-dashboard.git
+   git clone https://github.com/harshmeena9977-ops/sales-performance-powerbi-dashboard-
