@@ -1,159 +1,31 @@
-# 📊 Sales Performance Analytics Dashboard
+# Sales Performance Dashboard
 
-## 📊 Problem Statement
-A retail organization lacked comprehensive visibility into sales performance across multiple channels, products, and categories. Management needed actionable insights to optimize sales strategies, identify growth opportunities, and make data-driven decisions to increase profitability and market share.
+An independent Power BI practice project represented by a PBIX report and four screenshot exports. The repository does not include the data or database used by the report, so its numerical outputs and business claims are not independently reproducible here. This is not a client engagement.
 
-## 🗄️ Dataset Overview
-**Source:** Retail sales transaction database  
-**Size:** Multi-table relational database with sales, product, and customer data  
-**Time Period:** 2021-2022 (2-year comparative analysis)  
-**Geography:** Multi-region retail operations  
+## Project files
 
-### Key Features:
-- **Sales Transactions:** Revenue, profit margins, sales trends
-- **Product Hierarchy:** Product categories and individual product performance
-- **Channel Analysis:** Online, direct, and wholesaler sales channels
-- **Temporal Data:** Monthly, quarterly, and yearly performance metrics
-- **Customer Segments:** Different customer types and buying patterns
+- [Power BI report](outputs/Sales%20Performance%20Dashboard.pbix)
+- Dashboard screenshots: [Overview](outputs/Overview.png.png), [Sales performance](outputs/Sales-Performance.png.png), [Product analysis](outputs/Product-Analysis.png.png), and [Category analysis](outputs/Category-Analysis.png.png)
+- [Power BI technical guide](docs/power_bi_technical_guide.md)
+- [SQL and Power Query examples](scripts/README.md)
+- [Business insights notes](docs/business_insights.md.txt) — starter notes; numerical claims are unverified
 
-## 🔬 Approach & Methodology
+## Dashboard preview
 
-### 1. Data Integration & Modeling
-- **Multi-Source Integration:** Combined sales, product, and customer databases
-- **Data Modeling:** Created star schema for optimal Power BI performance
-- **KPI Framework:** Developed 20+ key performance indicators
-- **Data Validation:** Ensured data quality and consistency across sources
+![Overview dashboard](outputs/Overview.png.png)
 
-### 2. Business Intelligence Development
-- **Multi-Page Dashboard:** 4 focused analytical modules
-- **Interactive Slicers:** Year, quarter, channel, and category filters
-- **Drill-Down Capabilities:** From category to product-level analysis
-- **Automated Refresh:** Scheduled data updates for real-time insights
+The screenshot filenames suggest overview, sales, product, and category views. The report model and calculations have not been independently inspected.
 
-### 3. Advanced Analytics Implementation
-- **Year-over-Year Analysis:** Comparative performance metrics
-- **Channel Mix Optimization:** Revenue contribution analysis
-- **Product Performance:** Top-selling products and growth opportunities
-- **Profitability Analysis:** Margin optimization insights
+## Data and reproducibility
 
-## 🛠️ Tools & Technologies
+No dataset, database dump, database creation or loading script, or dataset citation is included. The SQL and Power Query documentation refers to tables and server settings that are not provided here. The technical guide and saved insight notes are documentation artifacts, not proof that the described transformations or metrics were executed and validated.
 
-| Category | Tools | Purpose |
-|----------|-------|---------|
-| **Business Intelligence** | Power BI Desktop | Interactive dashboard development |
-| **Data Modeling** | DAX, Power Query | Data transformation and measures |
-| **Visualization** | Power BI Visuals | Charts, KPIs, and interactive elements |
-| **Database** | SQL Server | Data source and query optimization |
-| **Documentation** | Markdown | Technical documentation |
+The README previously claimed a multi-region 2021–2022 retail database, 20+ KPIs, automated refresh, and specific growth, revenue-share, and margin results. Those claims are not supported by reproducible source data in this repository and are not reported here. No business impact or operational recommendation is claimed.
 
-## 💡 Key Insights & Business Impact
+## Open the report
 
-### Revenue Growth Performance
-- **Year-over-Year Growth:** 14% sales increase from 2021 to 2022
-- **Channel Optimization:** Online channel contributes 52% of total revenue
-- **Profit Margins:** 17% gross profit margin with optimization opportunities
-- **Seasonal Patterns:** Identified peak sales periods for inventory planning
+Download the PBIX and open it in Power BI Desktop. Reproducing or refreshing its figures requires the original data source and verified connection details, which are not documented in this repository.
 
-### Product & Category Analysis
-- **Top Performers:** Category04 leads with $95K sales revenue
-- **Product Leaders:** Product41 and Product30 are highest-selling items
-- **Growth Opportunities:** Mid-performing products identified for bundling strategies
-- **Category Performance:** Category02 and Category05 show strong contribution
+## Project status
 
-### Strategic Business Recommendations
-- **Channel Focus:** Optimize direct and wholesaler channels for growth
-- **Product Strategy:** Develop bundling opportunities for mid-tier products
-- **Pricing Optimization:** Review pricing strategy based on 17% margin analysis
-- **Inventory Planning:** Use seasonal patterns for better stock management
-
-## � Visualizations & Dashboards
-
-### Dashboard Modules
-1. **Overview Dashboard:** Total sales, profit, and KPI metrics
-2. **Sales Performance:** Monthly trends and payment mode analysis
-3. **Product Analysis:** Top-selling products with market share
-4. **Category Analysis:** Category-wise performance and top performers
-
-### Key Visual Elements
-- **KPI Cards:** Revenue, profit, and margin indicators with trend arrows
-- **Trend Analysis:** Year-over-year growth charts with monthly breakdowns
-- **Channel Distribution:** Revenue contribution by sales channel
-- **Product Rankings:** Top products with percentage share analysis
-
-## 🚀 How to Run This Project
-
-### Prerequisites
-```bash
-# Install Power BI Desktop (free version)
-# Ensure SQL Server access for data source
-# Clone repository for dashboard files
-```
-
-### Setup Instructions
-```bash
-# 1. Clone repository
-git clone https://github.com/harshmeena9977-ops/sales-performance-powerbi-dashboard-
-cd sales-performance-powerbi-dashboard-
-
-# 2. Open Power BI Dashboard
-# Open "Sales Performance Dashboard.pbix" in Power BI Desktop
-
-# 3. Configure Data Source
-# Update database connection settings in Power Query
-# Refresh data to load latest information
-
-# 4. Explore Interactive Features
-# Use slicers for year, quarter, and channel filtering
-# Navigate between 4 dashboard pages
-# Export reports using built-in Power BI features
-```
-
-### Data Refresh Process
-```sql
--- Sample SQL queries for data extraction
--- Monthly sales trends
-SELECT 
-    DATEPART(month, SaleDate) as Month,
-    DATEPART(year, SaleDate) as Year,
-    SUM(SalesAmount) as TotalSales,
-    SUM(Profit) as TotalProfit
-FROM SalesTransactions
-GROUP BY DATEPART(month, SaleDate), DATEPART(year, SaleDate)
-ORDER BY Year, Month;
-
--- Channel performance
-SELECT 
-    SalesChannel,
-    SUM(SalesAmount) as Revenue,
-    COUNT(*) as TransactionCount,
-    SUM(SalesAmount) * 100.0 / SUM(SUM(SalesAmount)) OVER () as RevenueShare
-FROM SalesTransactions
-GROUP BY SalesChannel
-ORDER BY Revenue DESC;
-```
-
-## 📋 Project Structure
-```
-├── README.md                              # This file
-├── Sales Performance Dashboard.pbix       # Main Power BI dashboard
-├── Overview.png.png                       # Dashboard overview screenshot
-├── Sales-Performance.png.png              # Sales performance analysis
-├── Product-Analysis.png.png               # Product performance view
-├── Category-Analysis.png.png              # Category analysis view
-└── business_insights.md.txt               # Detailed business insights
-```
-
-## 🏆 Resume Achievement
-
-**Senior Data Analyst** | Sales Performance Analytics Dashboard  
-*Developed comprehensive 4-page Power BI dashboard analyzing multi-channel sales performance, identifying 14% YoY growth opportunities and channel optimization strategies that enabled data-driven revenue growth decisions*
-
-## 📞 Contact & Repository
-- **GitHub:** [harshmeena9977-ops/sales-performance-powerbi-dashboard-](https://github.com/harshmeena9977-ops/sales-performance-powerbi-dashboard-)
-- **Live Dashboard:** Available in Sales Performance Dashboard.pbix
-- **Data Source:** Retail sales transaction database
-- **Business Insights:** Detailed analysis in business_insights.md.txt
-
----
-
-*Last Updated: March 2026 | Project Version: 2.0 (Recruiter-Ready)*
+Power BI practice dashboard with static visual exports. Dataset provenance, model and measure documentation, source access, and a clean refresh process need to be established before interpreting its figures as evidence.
